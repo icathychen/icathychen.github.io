@@ -8,6 +8,7 @@
 <p align="center"> 
   <kbd>
     <img src="assets/img/act1.png">
+    <img src="assets/img/activity2.png">
   </a>
   </kbd>
 </p>
