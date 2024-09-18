@@ -421,172 +421,108 @@
       <h3 class="page-title white-text teal">Projects</h3>
       <div class="container">
         <div class="row">
+          <div id="RecentProjects"></div>
+          <script>
+            const recentProjectSection = document.getElementById("RecentProjects")
+            const items = [
+            { name: 'Relica Travel Planner', 
+              description: 'Relica is a travel planning GIS. It has a personalized Trip Planning Feature. It allows travelers to create a customized itinerary.', 
+              accomplishments: ['Used the OpenStreetMap API and C++ programming language','Implemented optimization algorithms such as Dijkstra’s, A*, Greedy Algorithm and Simulated Annealing to obtain optimal path in the attempt to solve the Travelling Salesman Problem'],
+              image: 'relica.jpeg',
+              url:'https://drive.google.com/file/d/1kOokOForiESVPMdf4M7w2IO6NAs9z5kB/view?usp=sharing/',
+              date: '2022-04-15'},
+            { name: 'Diamond Crush Game', 
+              description: 'A Diamond Crush game, inspired by Candy Crush, on a DE1-SoC computer using C and ARM Assembly programming language',
+              accomplishments: ['Utilized different hardware components such as A9 private timer, Interrupts, Parallel Port, Switches, HEX display and VGA display for graphics rendering and user interaction. '],
+              image: 'diamondCrush2.jpeg',
+              url:'https://github.com/icathychen/DiamondCrush',
+              date: '2023-04-30'},
+            { name: 'Movie Poster Classifier', 
+              description: 'A machine-learning model using Convolutional Neural Network, Res-Net 50, and Pytorch that classifies movie poster images by genre.',
+              accomplishments: ['Implemented primary Neural Network and the baseline model. Researched the use of confusion matrix to analyze basic performance','Trained the CNN model on 12,000 poster images using Res-Net 50 and obtained a final accuracy of over 65% across 8 genres'],
+              image: 'AIProject.jpeg',
+              url:'https://github.com/icathychen/movie-poster-classifier',
+              date: '2022-04-15' },
+            { name: 'Staircase Generator', 
+              description: 'A staircase Generator Plug-in in Maya that can generate animated stairs based on the size and gap from slider input. ',
+              accomplishments: ['Implemented the UI component using Maya API library and Pymel.'],
+              image: 'staircases.jpeg',
+              url:'https://github.com/icathychen/MayaScripting/tree/main/staircaseGenerator',
+              date: '2022-07-22' }
+          ];
 
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Relica Travel Planner" src="/assets/img/relica.jpeg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Relica Travel Planner<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Relica is a travel planning GIS. It has a personalized Trip Planning Feature. 
-                  It allows travelers to create a customized itinerary.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Used the OpenStreetMap API and C++ programming language</li>
-			            <li>Implemented optimization algorithms such as Dijkstra’s, A*, Greedy Algorithm and Simulated Annealing to obtain optimal path in the attempt to solve the Travelling Salesman Problem</li>
-                  <li>Designed GUI using the GTK and EZGL graphics packages. Implemented callback functions to enable interactivity of map to search and save desired location via mouse click and keyboard</li>
-                  <li>Used matrix and multi-threading to enhance Map’s speed performance and user experience</li>
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://drive.google.com/file/d/1kOokOForiESVPMdf4M7w2IO6NAs9z5kB/view?usp=sharing/" target="_blank" data-position="top"
-                    data-tooltip="View Demo"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
+          const sortedItems = items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+          // Function to generate HTML
+          function generateHTML(items) {
+            let htmlArray = [];
+    
+            items.forEach(item => {
+              let subItemsHTML = '<ul>';
+              item.accomplishments.forEach(subItem => {
+                subItemsHTML += `<li>${subItem}</li>`;
+              });
+              subItemsHTML += '</ul>';
+    
+              let html = `
+              <div class="col s12 m6 l4">
+                <div class="card medium">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img alt="${item.name}" src="/assets/img/${item.image}" style="height: 100%; width: 100%" class="activator" />
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator teal-text hoverline">${item.name}<i
+                        class="mdi-navigation-more-vert right"></i></span>
+                    <p>
+                      ${item.description}
+                    </p>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text"><small>Accomplishments</small><i
+                        class="mdi-navigation-close right"></i></span>
+                    ${subItemsHTML}
+                    <div class="card-action">
+                      <a aria-label="Visit " href="${item.url}" target="_blank" data-position="top"
+                        data-tooltip="View Project"
+                        class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                          class="fa fa-external-link"></i></a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Diamond Crush Game" src="/assets/img/diamondCrush2.jpeg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Diamond Crush Game<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A Diamond Crush game, inspired by Candy Crush, on a DE1-SoC computer using C and ARM Assembly programming language
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Utilized different hardware components such as A9 private timer, Interrupts, Parallel Port, Switches, HEX display and VGA display for graphics rendering and user interaction. </li>
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/icathychen/DiamondCrush"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Flask Project -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Movie Poster Classifier" src="/assets/img/AIProject.jpeg"
-                style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Movie Poster Classifier<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A machine-learning model using Convolutional Neural Network, Res-Net 50, and Pytorch that classifies movie poster images by genre
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Implemented primary Neural Network and the baseline model. Researched the use of confusion matrix to analyze basic performance</li>
-                  <li>Trained the CNN model on 12,000 poster images using Res-Net 50 and obtained a final accuracy of over 65% across 8 genres</li>
-                  <li>Evaluate the model’s accuracy using testing data and validation data</li>
-                  <li>Web application allows users to upload images and view model predictions using a Python Flask REST API</li>
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/icathychen/movie-poster-classifier"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Video Summarizer -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Staircase Generator" src="/assets/img/staircases.jpeg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Staircase Generator<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A staircase Generator Plug-in in Maya that can generate animated stairs based on the size and gap from slider input. 
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Implemented the UI component using Maya API library and Pymel.</li>
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://github.com/icathychen/MayaScripting/tree/main/staircaseGenerator" target="_blank"
-                    data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Head Counting System -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of MovieList" src="/assets/img/movieList.jpeg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Website Development<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  This is a MovieList making website for movie-lovers. 
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Users can easily search up movies they want to watch and add them to their favourite list, watchlist, and watched</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://github.com/icathychen/movie-app" target="_blank"
-                    data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ************* -->
+              `;
+              htmlArray.push(html);
+            });
+    
+            return htmlArray.join('');
+          }
+    
+          // Load more project when the button is clicked
+          function loadMore() {
+            const remainingItems = items.slice(1);
+            recentProjectSection.innerHTML += generateHTML(remainingItems);
+    
+            // Change button text and functionality to "Load Recent"
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.innerHTML = 'Load Recent';
+            loadMoreBtn.onclick = loadRecent;
+          }
+    
+          function loadRecent() {
+            recentProjectSection.innerHTML = generateHTML(items.slice(0, 1));
+    
+            // Change button back to "Load More"
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.innerHTML = 'Load More';
+            loadMoreBtn.onclick = loadMore; 
+          }
+          
+          // Initial Load page
+          recentProjectSection.innerHTML = generateHTML(items.slice(0, 1));
+          </script>
+        </div>
+        <div class="row">
+          <button id="loadMoreBtn" class="btn-large" style="color: #ffffff; background-color:#e69db1 " onclick="loadMore()">Load More</button>
         </div>
       </div>
     </section>
@@ -607,7 +543,7 @@
                 <img alt="" src="/assets/img/python-logo-1-300x300.jpg" class="responsive-img" />Python
               </div>
               <div class="col s4 m2">
-                <img alt="" src="/assets/img/Javascript.png" class="responsive-img" />JavaScript
+                <img alt="" src="/assets/img/javascript.png" class="responsive-img" />JavaScript
               </div>
               <div class="col s4 m2">
                 <img alt="" src="/assets/img/typescript.png" class="responsive-img" />TypeScript
