@@ -20,7 +20,7 @@
     <img src="assets/img/s4.png">
     Activity 5:
     <img src="assets/img/activity5.png">
-    <img src="assets/img/A5.png">
+    <img src="assets/img/A5_2.png">
   </a>
   </kbd>
 </p>
