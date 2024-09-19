@@ -4,24 +4,23 @@
 > https://icathychen.github.io
 
 
-### Website Preview
-<p align="center"> 
-  <kbd>
-    Activity 1:
-    <img src="assets/img/act1.png">
-    Activity 2:
-    <img src="assets/img/activity2.png">
-    <img src="assets/img/s1.png">
-    Activity 3:
-    <img src="assets/img/activity3_2.png">
-    <img src="assets/img/S3.png">
-    Activity 4:
-    <img src="assets/img/activity4.png">
-    <img src="assets/img/s4.png">
-    Activity 5:
-    <img src="assets/img/Activity5.png">
-    <img src="assets/img/A5_3.png">
-  </a>
-  </kbd>
-</p>
+### Activity 1:
+<img src="assets/img/act1.png">
+
+### Activity 2:
+<img src="assets/img/activity2.png">
+<img src="assets/img/s1.png">
+
+### Activity 3:
+<img src="assets/img/activity3_2.png">
+<img src="assets/img/S3.png">
+
+### Activity 4:
+<img src="assets/img/activity4.png">
+<img src="assets/img/s4.png">
+
+### Activity 5:
+<img src="assets/img/Activity5.png">
+<img src="assets/img/A5_3.png">
+
 
